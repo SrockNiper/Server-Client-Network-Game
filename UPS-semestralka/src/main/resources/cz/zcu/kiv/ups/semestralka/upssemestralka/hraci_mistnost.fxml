@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="cz.zcu.kiv.ups.semestralka.upssemestralka.HraciMistnostControl"
+           prefWidth="1200" prefHeight="768"
+           styleClass="background">
+
+    <BorderPane fx:id="mainBorderPane">
+
+        <top>
+            <VBox alignment="CENTER" spacing="10" styleClass="panel-header">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                <Label fx:id="roomTitleLabel" text="Kostky - Místnost #1" styleClass="game-title"/>
+                <Label fx:id="gameStatusLabel" text="Čeká se na začátek hry..." styleClass="subtitle"/>
+            </VBox>
+        </top>
+
+        <center>
+            <VBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+                <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                <Label text="🎲 HRACÍ PLOCHA 🎲" styleClass="subtitle"/>
+
+
+                <HBox fx:id="diceContainer" alignment="CENTER" spacing="15" styleClass="dice-mat" HBox.hgrow="ALWAYS">
+                    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                    <GridPane fx:id="dice1" alignment="CENTER"/>
+                    <GridPane fx:id="dice2" alignment="CENTER"/>
+                    <GridPane fx:id="dice3" alignment="CENTER"/>
+                    <GridPane fx:id="dice4" alignment="CENTER"/>
+                    <GridPane fx:id="dice5" alignment="CENTER"/>
+                    <GridPane fx:id="dice6" alignment="CENTER"/>
+                </HBox>
+
+                <VBox alignment="CENTER" spacing="10" styleClass="score-panel">
+                    <Label fx:id="currentRoundScoreLabel" text="Skóre v kole: 0 bodů" styleClass="score"/>
+                    <Label fx:id="selectedScoreLabel" text="Zvolené kostky: 0 bodů" styleClass="label,gold"/>
+                </VBox>
+
+                <HBox alignment="CENTER" spacing="20">
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                    <Button fx:id="readyButton" text="✓ PŘIPRAVEN" onAction="#onReady"
+                            prefWidth="150" prefHeight="50" styleClass="button,success"/>
+                    <Button fx:id="throwButton" text="⚄ HODIT" onAction="#onThrowDices"
+                            prefWidth="150" prefHeight="50" styleClass="button,primary"/>
+                    <Button fx:id="bankButton" text="✓ PŘEDAT/ZAPSAT" onAction="#onBankScore" disable="true"
+                            prefWidth="180" prefHeight="50" styleClass="button,success"/>
+                    <Button fx:id="leaveButton" text="← ODEJÍT" onAction="#onLeaveRoom"
+                            prefWidth="120" prefHeight="50" styleClass="button,danger"/>
+                </HBox>
+            </VBox>
+        </center>
+
+        <right>
+            <VBox spacing="10" prefWidth="280" styleClass="panel" VBox.vgrow="ALWAYS">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                <Label text="📋 ŽEBŘÍČEK HRÁČŮ" styleClass="subtitle"/>
+
+                <TableView fx:id="playerTableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="nicknameColumn" text="Hráč" prefWidth="120" editable="false"/>
+                        <TableColumn fx:id="scoreColumn" text="Skóre" prefWidth="80" editable="false"/>
+                        <TableColumn fx:id="statusColumn" text="Status" prefWidth="75" editable="false"/>
+                    </columns>
+                </TableView>
+
+                <Label fx:id="winConditionLabel" text="První na 5000 bodů vyhrává!" styleClass="label"/>
+            </VBox>
+        </right>
+
+        <bottom>
+            <VBox spacing="5" prefHeight="150" styleClass="panel">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <Label text="📜 HERNÍ LOG" styleClass="subtitle"/>
+                <TextArea fx:id="gameLogArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </bottom>
+
+    </BorderPane>
+
+</StackPane>

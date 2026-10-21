@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cz.zcu.kiv.ups.semestralka.upssemestralka.GameOverController"
+            prefHeight="600.0" prefWidth="800.0"
+            style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #34495e);">
+
+
+    <top>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 40;">
+            <!-- Game Over Title -->
+            <Label text="KONEC HRY" styleClass="game-over-title"
+                   style="-fx-font-size: 60px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;">
+            </Label>
+
+            <Label fx:id="winnerLabel" text="🏆 Vítěz: [Jméno] 🏆"
+                   style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #f39c12;">
+            </Label>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+
+            <Label text="Finální Výsledky"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #ecf0f1;">
+            </Label>
+
+            <TableView fx:id="scoreboardTable" prefHeight="300.0" prefWidth="500.0"
+                       style="-fx-background-color: rgba(44, 62, 80, 0.9); -fx-border-color: #95a5a6; -fx-border-width: 2px;">
+                <columns>
+                    <TableColumn fx:id="playerColumn" text="Hráč" prefWidth="250.0"
+                                 style="-fx-alignment: CENTER-LEFT; -fx-font-size: 18px; -fx-text-fill: white;">
+                    </TableColumn>
+                    <TableColumn fx:id="finalScoreColumn" text="Celkové Skóre" prefWidth="250.0"
+                                 style="-fx-alignment: CENTER; -fx-font-size: 18px; -fx-text-fill: white;">
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
+            <Button fx:id="backButton" text="Zpět do Lobby" onAction="#onBackToLobby"
+                    prefWidth="200.0" prefHeight="50.0"
+                    style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-cursor: hand;">
+            </Button>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+
